@@ -31,6 +31,16 @@ def encrypt(plaintext: str, key: dict[str, str]) -> str:
     return ciphertext
 
 
+def decrypt(ciphertext: str, key: dict[str, str]) -> str:
+    """
+    Decrypts a message using the monoalphabetic substitution cipher
+    @param ciphertext: str
+    @param key: dict[str, str] mapping plaintext to ciphertext
+    @return: str
+    """
+    return encrypt(ciphertext, get_inverse_key(key))
+
+
 # second method - using a permutation of the alphabet
 def get_inverse_key_perm(key: str) -> str:
     """
@@ -63,3 +73,12 @@ def encrypt_perm(plaintext: str, key: str) -> str:
 
     return ciphertext
 
+
+def decrypt_perm(ciphertext: str, key: str) -> str:
+    """
+    Decrypts a message using the monoalphabetic substitution cipher
+    :param ciphertext: str
+    :param key: str, represented as a permutation of the uppercase english alphabet
+    :return: str
+    """
+    return encrypt_perm(ciphertext, get_inverse_key_perm(key))

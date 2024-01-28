@@ -116,3 +116,12 @@ def encrypt_index(plaintext: str, key: int) -> str:
 
     return ciphertext
 
+
+def decrypt(ciphertext: str, key: int) -> str:
+    """
+    Performs decryption
+    :param ciphertext: str
+    :param key: int
+    :return: str
+    """
+    return encrypt(ciphertext, -key)
