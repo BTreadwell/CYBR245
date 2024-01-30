@@ -11,7 +11,7 @@ def main():
         print("Key must contain only alphabetic characters A-Z")
         key = input("Enter the encryption key: ").upper()
 
-    new_message = Vigenere.apply_vigenere(is_encrypt, message, key)
+    new_message = vigenere.apply_vigenere(is_encrypt, message, key)
 
     print("The result of applying the Vigenere Cipher with the provided parameters is:\n" + new_message)
 

@@ -24,3 +24,32 @@ def encrypt(message: str, keyword: str) -> str:
 
     return ciphertext
 
+
+def decrypt(message: str, keyword: str) -> str:
+    """
+    Decrypts message which was encrypted with Vigenere Cipher using the provided keyword
+    :param message: str
+    :param keyword: str, upper-case English letters
+    :return: str
+    """
+    return ""
+
+
+def apply_vigenere(is_encrypt: bool, message: str, key: str) -> str:
+    """
+    just a helper method
+    """
+    return encrypt(message, key) if is_encrypt else decrypt(message, key)
+
+
+def get_inverse_key(keyword: str) -> str:
+    """
+    computes the inverse key
+    :param keyword: str, upper-case English letters
+    :return: str
+    """
+    inverse_key = ""
+    for char in keyword:
+        inverse_key += chr((26 - (ord(char) - 65)) % 26 + 65)
+
+    return inverse_key
