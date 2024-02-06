@@ -32,7 +32,21 @@ def decrypt(message: str, keyword: str) -> str:
     :param keyword: str, upper-case English letters
     :return: str
     """
-    return ""
+    inv_key = get_inverse_key(keyword)
+
+    plaintext = ""
+    for idx, char in enumerate(message):
+        char_ascii = ord(char)
+        shift = ord(inv_key[idx % len(inv_key)]) - UPPER_OFFSET
+
+        if char.isupper():
+            plaintext += chr(((char_ascii - UPPER_OFFSET) + shift) % 26 + UPPER_OFFSET)
+        elif char.islower():
+            plaintext += chr(((char_ascii - LOWER_OFFSET) + shift) % 26 + LOWER_OFFSET)
+        else:
+            plaintext += char
+
+    return plaintext
 
 
 def apply_vigenere(is_encrypt: bool, message: str, key: str) -> str:
